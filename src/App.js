@@ -19,7 +19,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <AppHeader/>
-            <Container>
+            <Container style={{marginTop: '5em'}}>
               <Route path={"/"} exact component={HomeView} />
               <Route path={"/plants"} exact component={PanelListView} />
               <Route path={"/plants/create"} exact component={PlantFormView} />

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 
 
 class PlantListView extends Component {
@@ -14,9 +15,12 @@ class PlantListView extends Component {
 
     componentDidMount(){
         if (window.mega_api){
-            window.mega_api.listPlants().then((plants) => {
-                this.setState({plants: plants.plants});
-            })
+            const plantList = window.mega_api.listPlants();
+            if (plantList){
+                plantList.then((plants) => {
+                    this.setState({plants: plants.plants});
+                })
+            }
         }
     }
 
@@ -25,8 +29,12 @@ class PlantListView extends Component {
             <td>{plant.name}</td>
             <td>{plant.id}</td>
             <td>
-                <Link to={`/plant/${plant.id}`}>View plant</Link>
-                <Link to={`/plant/${plant.id}/update`}>Update plant</Link>
+                <Button variant={""}>
+                    <Link to={`/plant/${plant.id}`}>View plant</Link>
+                </Button>
+                <Button variant={""}>
+                    <Link to={`/plant/${plant.id}/update`}>Update plant</Link>
+                </Button>
             </td>
         </tr>
     }

@@ -57,9 +57,9 @@ class PlantDetailView extends Component {
             })
         });
 
-        return <div>
+        return <div style={{marginTop: '2em'}}>
             <h3>Energy Charts of {this.state.plant.name}</h3>
-            <ResponsiveContainer width="100%" height={window.innerHeight*0.50}>
+            <ResponsiveContainer width="100%" height={window.innerHeight*0.50} style={{marginTop: '2em'}}>
                 <LineChart
                     data={dataset}
                     margin={{
@@ -77,7 +77,7 @@ class PlantDetailView extends Component {
             </ResponsiveContainer>
 
             <h3>Irradiation Charts of {this.state.plant.name}</h3>
-            <ResponsiveContainer width="100%" height={window.innerHeight*0.50}>
+            <ResponsiveContainer width="100%" height={window.innerHeight*0.50} style={{marginTop: '2em'}}>
                 <LineChart
                     data={dataset}
                     margin={{
@@ -197,7 +197,7 @@ class PlantDetailView extends Component {
     renderPlant(){
         const {plant, showGraphs} = this.state;
         if (plant){
-            return <div>
+            return <div style={{marginTop: '2em'}}>
                 <h3>{plant.name}</h3>
                 <ButtonGroup>
                     <Button variant="primary" onClick={(event) => {
@@ -223,7 +223,7 @@ class PlantDetailView extends Component {
                 </ButtonGroup>
                 {showGraphs ? this.buildDatapointCharts() : null}
                 <h3>Plant datapoint table</h3>
-                <Table striped bordered hover>
+                <Table striped bordered hover style={{marginTop: '2em'}}>
                     <thead>
                         <tr>
                             <th>Energy expected</th>
@@ -239,7 +239,6 @@ class PlantDetailView extends Component {
                     } )}
                     </tbody>
                 </Table>
-
             </div>
         }
     }

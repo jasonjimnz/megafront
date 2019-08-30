@@ -2,7 +2,7 @@ import ajax from 'superagent';
 
 class Api{
     constructor(){
-        this.baseUrl = process.env.BACKEND_HOST ;
+        this.baseUrl = process.env.BACKEND_HOST ? process.env.BACKEND_HOST : 'http://localhost:8000' ;
     }
 
     createPlant(plantName){

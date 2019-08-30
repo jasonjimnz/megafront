@@ -71,7 +71,7 @@ class PlantFormView extends Component {
 
         return (
             <div>
-                <h2>Create Plant</h2>
+                <h2>{plantId ? "Update" : "Create"} Plant</h2>
                 <Form onSubmit={this.savePlantForm}>
                     <Form.Group>
                         <Form.Label>Plant name</Form.Label>
@@ -89,7 +89,12 @@ class PlantFormView extends Component {
                         </Form.Text>
                     </Form.Group>
                     <Button variant="success" type={"submit"}>Save plant</Button>
-                    <Link to="/plants" className={"button button-danger"}>Go to plant list</Link>
+                    <Button variant={""}>
+                        <Link to="/plants" className={"button button-danger"}>
+                            Go to plant list
+                        </Link>
+                    </Button>
+
                 </Form>
             </div>
         );
