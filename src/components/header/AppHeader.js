@@ -5,10 +5,6 @@ import Nav from "react-bootstrap/Nav";
 
 
 class AppHeader extends Component {
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return <Navbar bg="light" expand="lg">
             <Navbar.Brand>MegaFront</Navbar.Brand>

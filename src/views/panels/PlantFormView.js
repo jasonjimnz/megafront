@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Alert from "react-bootstrap/Alert";
 import {Link, Redirect, withRouter} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -23,14 +22,18 @@ class PlantFormView extends Component {
     }
 
     componentDidMount(){
-        this.getPlantDetail()
+        if (this.state.plantId)
+            this.getPlantDetail()
     }
 
     getPlantDetail(){
         if (window.mega_api){
-            window.mega_api.getPlant(this.state.plantId).then((plant) => {
-                this.setState({plant: plant.plant});
-            })
+            const plantDetail = window.mega_api.getPlant(this.state.plantId);
+            if (plantDetail){
+                plantDetail.then((plant) => {
+                    this.setState({plant: plant.plant});
+                })
+            }
         }
     }
 
@@ -38,18 +41,24 @@ class PlantFormView extends Component {
         event.preventDefault();
         if (window.mega_api){
             if (this.state.plantId){
-                window.mega_api.updatePlant(this.state.plantId, this.state.plant.name).then((plant) => {
-                    this.setState({
-                        redirectTo: true
+                const updatePlant = window.mega_api.updatePlant(this.state.plantId, this.state.plant.name)
+                if (updatePlant){
+                    updatePlant.then((plant) => {
+                        this.setState({
+                            redirectTo: true
+                        })
                     })
-                })
+                }
             } else {
-                window.mega_api.createPlant(this.state.plant.name).then((plant) => {
-                    this.setState({
-                        plantId: plant.id,
-                        redirectTo: true
+                const createPlant = window.mega_api.createPlant(this.state.plant.name);
+                if (createPlant){
+                    createPlant.then((plant) => {
+                        this.setState({
+                            plantId: plant.id,
+                            redirectTo: true
+                        })
                     })
-                })
+                }
             }
         }
     }
@@ -62,8 +71,7 @@ class PlantFormView extends Component {
 
         return (
             <div>
-                <h2>React</h2>
-                <Alert variant="success">{plantId ? "Update": "Create"} form View</Alert>
+                <h2>Create Plant</h2>
                 <Form onSubmit={this.savePlantForm}>
                     <Form.Group>
                         <Form.Label>Plant name</Form.Label>

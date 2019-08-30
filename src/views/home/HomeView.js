@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-import Alert from "react-bootstrap/Alert";
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import {Jumbotron} from "react-bootstrap";
 
 
 class HomeView extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         return (
-            <div>
-                <h2>React</h2>
-                <Alert variant="success">React alert</Alert>
-            </div>
+            <Jumbotron>
+                <h1>Megafront</h1>
+                <p>Welcome to the simple platform for solar panels management</p>
+                <p>You can go to the <Link to={'/plants'}>plant list</Link> and manage any plant from there</p>
+                <p>Also you can <Link to={'/plants/create'}>create a new plant</Link> to add it to your list</p>
+            </Jumbotron>
         );
     }
 }

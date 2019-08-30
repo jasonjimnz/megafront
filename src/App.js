@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Api from "./services/Api";
 import AppHeader from "./components/header/AppHeader";
 import HomeView from "./views/home/HomeView";
-import PanelListView from "./views/panels/PanelListView";
+import PanelListView from "./views/panels/PlantListView";
 import PlantFormView from "./views/panels/PlantFormView";
 import PlantDetailView from "./views/panels/PlantDetailView";
 import Container from "react-bootstrap/Container";
