@@ -66,6 +66,18 @@ class Api{
                 return null;
             })
     }
+
+    refreshPlantDatapoints(plantId, fromDate, toDate){
+        if (!plantId || !fromDate || !toDate)
+            return null;
+        const refreshPlantDatapointsUrl = `${this.baseUrl}/panels/refresh/${plantId}?from_date=${fromDate}&to_date=${toDate}`
+        return ajax.get(refreshPlantDatapointsUrl)
+            .then((res) => {
+                return res.body;
+            }).catch((e) => {
+                return null;
+            })
+    }
 }
 
 export default Api;

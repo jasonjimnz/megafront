@@ -12,13 +12,26 @@ class PlantFormView extends Component {
             plant: {
                 name: ''
             },
-            plantId: this.props.plantId,
+            plantId: this.props.match.params['plant_id'],
             redirectTo: false,
             error: false,
             errorMessage: ""
         };
 
         this.savePlantForm = this.savePlantForm.bind(this);
+        this.getPlantDetail = this.getPlantDetail.bind(this);
+    }
+
+    componentDidMount(){
+        this.getPlantDetail()
+    }
+
+    getPlantDetail(){
+        if (window.mega_api){
+            window.mega_api.getPlant(this.state.plantId).then((plant) => {
+                this.setState({plant: plant.plant});
+            })
+        }
     }
 
     savePlantForm(event){
@@ -50,7 +63,7 @@ class PlantFormView extends Component {
         return (
             <div>
                 <h2>React</h2>
-                <Alert variant="success">Panel form View</Alert>
+                <Alert variant="success">{plantId ? "Update": "Create"} form View</Alert>
                 <Form onSubmit={this.savePlantForm}>
                     <Form.Group>
                         <Form.Label>Plant name</Form.Label>

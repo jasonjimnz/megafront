@@ -24,6 +24,7 @@ class App extends Component {
               <Route path={"/plants"} exact component={PanelListView} />
               <Route path={"/plants/create"} exact component={PlantFormView} />
               <Route path={"/plant/:plant_id"} exact component={PlantDetailView} />
+              <Route path={"/plant/:plant_id/update"} exact component={PlantFormView} />
             </Container>
 
           </div>

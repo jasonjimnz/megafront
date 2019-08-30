@@ -30,8 +30,7 @@ class PlantListView extends Component {
     render() {
         return (
             <div>
-                <h2>React</h2>
-                <Alert variant="success">Panel List View</Alert>
+                <h2>Plant list</h2>
                 {this.state.plants.map((plant) => {
                     return this.renderPlant(plant);
                 })}
