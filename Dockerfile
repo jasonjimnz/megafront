@@ -11,7 +11,7 @@ ENV MEGA_BACKEND_HOST = "192.168.1.11:8000"
 RUN git clone https://github.com/jasonjimnz/megafront.git
 RUN npm install -g serve
 RUN npm install --prefix /megafront/
-RUN npm run build BACKEND_HOST=${MEGA_BACKEND_HOST} --prefix /megafront/
+RUN npm run build --BACKEND_HOST=${MEGA_BACKEND_HOST} --prefix /megafront/
 
 EXPOSE 5000
 
