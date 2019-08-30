@@ -7,7 +7,7 @@ RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/n/nodejs/nodejs_10.15.2~
 RUN dpkg -i nodejs_10.15.2~dfsg-1_amd64.deb && apt-get install -y npm
 
 # Change the URL for your Megabackend service
-ENV MEGA_BACKEND_HOST = "http://192.168.1.11:8000"
+ENV MEGA_BACKEND_HOST "http://192.168.1.11:8000"
 
 RUN git clone https://github.com/jasonjimnz/megafront.git
 # Same as above, it should work using env vars, but in Docker seems to work different as Bash
