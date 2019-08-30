@@ -216,6 +216,10 @@ class PlantDetailView extends Component {
                         event.preventDefault();
                         this.setState({showGraphs: !showGraphs})
                     }}>{showGraphs ? "Hide" : "Show"} Charts</Button>
+                    <Button variant={""}>
+                        <a className={'button'} href={`${window.mega_api.baseUrl}/plant/${this.state.plantId}/report`} target={'_blank'}>Download report in CSV</a>
+                    </Button>
+
                 </ButtonGroup>
                 {showGraphs ? this.buildDatapointCharts() : null}
                 <h3>Plant datapoint table</h3>
